@@ -1,4 +1,4 @@
-function plot_car2(x_e,x)
+function plot_car2(x_e,x,im1)
 %     figure(fig);
 %     msiz = 200; % marker size
 %     malpha = 0.5; % marker alpha
@@ -19,16 +19,16 @@ function plot_car2(x_e,x)
 %     car2.MarkerFaceAlpha = malpha;
 
 
-    im1 = imread('cars/car_green.png');
+%     im1 = imread('cars/car_green.png');
 %     im2 = imread('cars/car_red.png');
     malpha = 0.7; % marker alpha
     fsiz = 12;
     y_e = x(3);
 %     h = x(3);
     len = 4;
-    wid = 0.4;
+    wid = 1;
     x1 = [x_e-len,x_e+len];
-    y1 = [y_e + 4.1+wid,y_e + 4.1-wid];
+    y1 = [y_e + wid,y_e - wid];
     alphachannel = ~(im1(:,:,1)==255 & im1(:,:,2)==255 & im1(:,:,3)==255);
     car1 = imagesc(x1, y1,im1,'AlphaData', 0);
     

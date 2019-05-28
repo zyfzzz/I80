@@ -12,6 +12,6 @@ function plot_road(x_e,t)
     plot([-200 4000],[lane_width*5,lane_width*5],'k--','LineWidth',3);
     plot([-200 4000],[lane_width*6,lane_width*6],'k--','LineWidth',3);
     plot([-200 4000],[lane_width*7,lane_width*7],'k-','LineWidth',3);
-    axis([x_e-100 x_e+100 -2 28])
+    axis([x_e-50 x_e+50 -2 28])
     set(gca,'ytick',[])
 end

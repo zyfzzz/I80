@@ -5,19 +5,25 @@ time_horizon = size(data.cv);
 time_horizon = time_horizon(1);
 
 figure;
-for t=350:370  % Choose the time period to animate
+% profile on
+%read image from here
+setappdata(gca,'LegendColorbarManualSpace',1);
+setappdata(gca,'LegendColorbarReclaimSpace',1);
+for t=300:320 % Choose the time period to animate
     xEgo = data.cv(t,4);
     cv = data.cv(t,:);
+    im1 = imread('cars/car_blue.png');
+    im2 = imread('cars/car_green.png');
     
     clf;
     hold on
     plot_road(xEgo,t);
-    plot_car2(xEgo,cv);
+    plot_car2(xEgo,cv,im2);
     
-    for i = 2:33
+    for i = 2:44
         xov = data_matrix(t,4,i);
         ov = data_matrix(t,:,i);
-        plot_car1(xov,ov);
+        plot_car1(xov,ov,im1);
     end
     drawnow;
     hold off
@@ -37,4 +43,4 @@ for t=350:370  % Choose the time period to animate
 %     drawnow;
 %     hold off
 end
-        
+% profile viewer

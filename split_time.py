@@ -1,6 +1,8 @@
 import csv
 import os
-
+import shutil
+import glob
+#todo clear folder 
 class vehicle_t:
     tf = 0;  # total_frame
     ID = 0;
@@ -30,7 +32,7 @@ class vehicle_t:
         assert(int(row[2])==self.tf)
         self.time.append(int(row[3])/1000);
         self.x.append(float(row[4])*0.3048);
-        self.y.append(float(row[5])*0.3048);
+        self.y.append(float(row[5]));
         self.vel.append(float(row[11])*0.3048);
         self.acc.append(float(row[12])*0.3048)
         self.lane.append(int(row[13]));
@@ -84,7 +86,10 @@ def main():
     #num = sum(1 for line in open('../../NGSIM_all.csv'));
     #print(num);
     #with open('../../NGSIM_all.csv', mode = 'r') as csvfile:
-    with open('../../i_80.csv', mode = 'r') as csvfile:
+    remove_list = glob.glob('s*/')
+    for i in remove_list:
+        shutil.rmtree(i)
+    with open('i_80.csv', mode = 'r') as csvfile:
         spamreader = csv.reader(csvfile)
         head = next(spamreader);
         for row in spamreader:

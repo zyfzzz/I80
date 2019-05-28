@@ -25,10 +25,9 @@ for i=1:2860 %arbituary number cause don't know the file name with the largest I
     end
     
     pos = find(cv(:,1) == temp(1,1));
-    temp = [zeros(pos-1,n);temp];
+    temp = [zeros(pos(1)-1,n);temp];
     [m_,~] = size(temp);
     temp = [temp;zeros(m-m_,n)];
-    
     data_matrix(:,:,k+1) = temp;
     
     j = strcat('ov',int2str(k));
