@@ -32,7 +32,7 @@ class vehicle_t:
         assert(int(row[2])==self.tf)
         self.time.append(int(row[3])/1000);
         self.x.append(float(row[4])*0.3048);
-        self.y.append(float(row[5]));
+        self.y.append(float(row[5])*0.3048);
         self.vel.append(float(row[11])*0.3048);
         self.acc.append(float(row[12])*0.3048)
         self.lane.append(int(row[13]));

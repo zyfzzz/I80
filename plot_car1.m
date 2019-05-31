@@ -23,7 +23,7 @@ function plot_car1(x_e,x,im1)
   
     y_e = x(3);
   
-    len = 4;
+    len = 2.4;
     wid = 1;
     x1 = [x_e-len,x_e+len];
     y1 = [y_e+wid,y_e-wid];
