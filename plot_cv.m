@@ -12,7 +12,7 @@ setappdata(gca,'LegendColorbarManualSpace',1);
 setappdata(gca,'LegendColorbarReclaimSpace',1);
 im1 = imread('cars/car_blue.png');
 im2 = imread('cars/car_green.png');
-for t=380:400 % Choose the time period to animate
+for t=380:390 % Choose the time period to animate
     xEgo = data.cv(t,4);
     cv = data.cv(t,:);
     clf;

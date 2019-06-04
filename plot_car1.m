@@ -19,11 +19,11 @@ function plot_car1(x_e,x,im1)
 %     car2.MarkerFaceAlpha = malpha;
 %     im1 = imread('cars/car_blue.png');
 %     im2 = imread('cars/car_black.png');
-    malpha = 0.7; % marker alpha
+    malpha = 0.8; % marker alpha
   
     y_e = x(3);
   
-    len = 2.4;
+    len = 0.8;
     wid = 1;
     x1 = [x_e-len,x_e+len];
     y1 = [y_e+wid,y_e-wid];
