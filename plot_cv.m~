@@ -1,28 +1,28 @@
-clc;
-clear all;
-close all;
-read_data;
-rmdir('temp','s')
+
 data = load('read_data.mat');
 data = data.data;
 
 time_horizon = size(data.cv);
 time_horizon = time_horizon(1);
-mkdir('temp')
-fig = figure('visible', 'off');
+
+figure;
 % profile on
 %read image from here
 setappdata(gca,'LegendColorbarManualSpace',1);
 setappdata(gca,'LegendColorbarReclaimSpace',1);
 im1 = imread('cars/car_blue.png');
 im2 = imread('cars/car_green.png');
-[x,y,z] = size(data_matrix);
-for t=1:x % Choose the time period to animate
-    t
+t1 = 1050;
+t2 = 1060;
+density_array = zeros(5,t2-t1);
+for t=t1:t2 % Choose the time period to animate
+    total_car = 1;
     xEgo = data.cv(t,4);
     cv = data.cv(t,:);
+    average_vel = cv(5);
+    average_acc = cv(6);
     clf;
-    hold on
+%     hold on
     plot_road(xEgo,t);
     plot_car2(xEgo,cv,im2);
     
@@ -33,11 +33,20 @@ for t=1:x % Choose the time period to animate
             xov = data_matrix(t,4,i);
             ov = data_matrix(t,:,i);
             plot_car1(xov,ov,im1);
+            if ov ~= 0
+                total_car = total_car + 1;
+                average_vel = average_vel + ov(5);
+                average_acc = average_acc + ov(6);
+            end
         end
     end
-
-    saveas(fig, ['temp/', 'frame_', num2str(t),'.png'])
-    hold off
+    
+    density = total_car / 30; %(car / meter )
+    average_vel = average_vel / total_car;
+    average_acc = average_acc / total_car;
+    density_array(:, t -t1 + 1) = [density, average_vel, average_acc];
+    drawnow limitrate
+%     hold off
     
 %     xov1 = data.ov1(t,4);
 %     xov2 = data.ov2(t,4);
@@ -54,7 +63,7 @@ for t=1:x % Choose the time period to animate
 %     drawnow;
 %     hold off
 end
-% 
+save('density', 'density_array', 'flow_array');
+
+drawnow
 % profile viewer
-
-

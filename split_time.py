@@ -34,7 +34,7 @@ class vehicle_t:
         self.x.append(float(row[4])*0.3048);
         self.y.append(float(row[5])*0.3048);
         self.vel.append(float(row[11])*0.3048);
-        self.acc.append(float(row[12])*0.3048)
+        self.acc.append(float(row[12])*0.3048);
         self.lane.append(int(row[13]));
         self.preced.append(int(row[20]));
         self.follow.append(int(row[21]));

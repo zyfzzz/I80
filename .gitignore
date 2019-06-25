@@ -2,3 +2,4 @@
 *.csv
 cars/
 s*/
+*.mat
