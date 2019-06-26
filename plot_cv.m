@@ -12,8 +12,8 @@ setappdata(gca,'LegendColorbarManualSpace',1);
 setappdata(gca,'LegendColorbarReclaimSpace',1);
 im1 = imread('cars/car_blue.png');
 im2 = imread('cars/car_green.png');
-t1 = 1050;
-t2 = 1060;
+t1 = 1051;
+t2 = 1100;
 density_array = zeros(3,t2-t1 + 1);
 for t=t1:t2 % Choose the time period to animate
     total_car = 1;
@@ -41,7 +41,7 @@ for t=t1:t2 % Choose the time period to animate
         end
     end
     
-    density = total_car / 30; %(car / meter )
+    density = total_car / 30 * 1000; %(car / km)
     average_vel = average_vel / total_car;
     average_acc = average_acc / total_car;
     density_array(:, t -t1 + 1) = [density, average_vel, average_acc];
